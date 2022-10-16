@@ -8,6 +8,63 @@
 9 5 3 2
 8 4 4 2*/
 
+Console.WriteLine("Количество строк: ");
+int m = int.Parse(Console.ReadLine());
+Console.WriteLine("Количество столбцов: ");
+int n = int.Parse(Console.ReadLine());
+int[,] array = new int[m, n];
+Console.WriteLine("До изменения:");
+Random(array);
+Print(array);
+Console.WriteLine("");
+Console.WriteLine("После изменения:");
+Descending(array);
+Print(array);
+
+void Random(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            array[i, j] = new Random().Next(0, 99);
+        }
+    }
+}
+
+void Print(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        int index = 0;
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine("");
+    }
+}
+
+void Descending(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1)-1; j++)
+        {
+            for (int d = 0; d < array.GetLength(1)-1; d++)
+            {
+                if (array[i, d] < array[i, d+1])
+                {
+                    int desc = 0;
+                    desc = array[i, d];
+                    array[i,d] = array[i, d+1];
+                    array[i, d+1] = desc;
+                }
+            }
+        }
+    }
+}
+
 /*Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
 
 Например, задан массив:
@@ -18,7 +75,7 @@
 5 2 6 7
 Программа считает сумму элементов в каждой строке и выдаёт номер строки с наименьшей суммой элементов: 1 строка*/
 
-Console.WriteLine("Количество строк: ");
+/*Console.WriteLine("Количество строк: ");
 int m = int.Parse(Console.ReadLine());
 Console.WriteLine("Количество столбцов: ");
 int n = int.Parse(Console.ReadLine());
@@ -67,7 +124,7 @@ void Print(int[,] array)
         }
         Console.WriteLine("");
     }
-}
+}*/
 
 /*Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц.
 Например, даны 2 матрицы:
