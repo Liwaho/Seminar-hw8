@@ -192,7 +192,7 @@ void Print(int[,] arr)
 27(0,0,1) 90(0,1,1)
 26(1,0,1) 55(1,1,1)*/
 
-Console.WriteLine("Размер массива: ");
+/*Console.WriteLine("Размер массива: ");
 int size = int.Parse(Console.ReadLine());
 int[,,] array = new int[size, size, size];
 Console.WriteLine("Массив:");
@@ -227,7 +227,7 @@ void Print(int[,,] array)
         }
         Console.WriteLine("");
     }
-}
+}*/
 
 /*Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 Например, на выходе получается вот такой массив:
@@ -235,6 +235,51 @@ void Print(int[,,] array)
 12 13 14 05
 11 16 15 06
 10 09 08 07*/
+
+Console.WriteLine("Начать с числа: ");
+int start = int.Parse(Console.ReadLine());
+int point = start;
+int[,] array = new int[4, 4];
+int i = 0;
+int j = 0;
+
+while (start < 16 + point)
+{
+    array[i,j] = start;
+        if (i <= j + 1 & i + j < 3)
+        {
+            j++;
+        }
+    else if (i < j & i + j >= 3)
+        {
+            i++;
+        }
+    else if (i >= j & i + j > 3)
+        {
+            j--;
+        }
+    else i--;
+    start++;
+}
+Print(array);
+
+void Print(int[,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            if (array[i, j] < 10)
+            {
+                Console.Write("0" + array[i, j] + " ");
+            }
+            else
+                Console.Write(array[i, j] + " ");
+        }
+        Console.WriteLine("");
+    }
+}
+
 
 /*Если решено:
 1-2 задачи - удовлетворительно
